@@ -17,7 +17,7 @@
 package io.github.edsuns.adblockclient
 
 import android.net.Uri
-import android.webkit.WebResourceRequest
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import java.util.*
 
 
