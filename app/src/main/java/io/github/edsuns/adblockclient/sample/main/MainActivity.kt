@@ -8,12 +8,12 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
-import android.webkit.URLUtil
-import android.webkit.WebSettings
-import android.webkit.WebView
 import android.widget.PopupMenu
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.tencent.smtt.sdk.URLUtil
+import com.tencent.smtt.sdk.WebSettings
+import com.tencent.smtt.sdk.WebView
 import io.github.edsuns.adblockclient.sample.R
 import io.github.edsuns.adblockclient.sample.databinding.ActivityMainBinding
 import io.github.edsuns.adblockclient.sample.hideKeyboard
@@ -91,14 +91,14 @@ class MainActivity : AppCompatActivity(), WebViewClientListener {
         settings.databaseEnabled = true
         settings.domStorageEnabled = true
         // Zooms out the content to fit on screen by width. For example, showing images.
-        settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING
+        settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         settings.loadWithOverviewMode = true
         settings.useWideViewPort = true
         // enable touch zoom controls
         settings.builtInZoomControls = true
         settings.displayZoomControls = false
         // allow Mixed Content
-        settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
+        settings.mixedContentMode = 2
 
         filter.setupWebView(webView)
 

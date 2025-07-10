@@ -2,8 +2,10 @@ package io.github.edsuns.adblockclient.sample.main
 
 import android.graphics.Bitmap
 import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebView
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient
+import com.tencent.smtt.sdk.WebChromeClient
+import com.tencent.smtt.sdk.WebView
+
 
 /**
  * Created by Edsuns@qq.com on 2021/1/2.
@@ -14,7 +16,7 @@ class ChromeClient(private val webViewClientListener: WebViewClientListener) : W
         webViewClientListener.progressChanged(newProgress)
     }
 
-    override fun onShowCustomView(view: View?, callback: CustomViewCallback?) {
+    override fun onShowCustomView(view: View?, callback: IX5WebChromeClient.CustomViewCallback?) {
         if (view != null && callback != null) {
             Fullscreen.onShowCustomView(view.context, view, callback)
         }

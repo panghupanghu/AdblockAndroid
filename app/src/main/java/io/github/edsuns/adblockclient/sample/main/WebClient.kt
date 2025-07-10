@@ -1,7 +1,13 @@
 package io.github.edsuns.adblockclient.sample.main
 
 import android.graphics.Bitmap
-import android.webkit.*
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse
+import com.tencent.smtt.sdk.URLUtil
+import com.tencent.smtt.sdk.WebView
+import com.tencent.smtt.sdk.WebViewClient
+
+
 import io.github.edsuns.adfilter.AdFilter
 
 /**

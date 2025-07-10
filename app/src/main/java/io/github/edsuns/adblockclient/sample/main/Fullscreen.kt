@@ -7,7 +7,8 @@ import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.webkit.WebChromeClient.CustomViewCallback
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient
+
 import java.lang.ref.WeakReference
 
 
@@ -17,9 +18,9 @@ import java.lang.ref.WeakReference
 object Fullscreen {
 
     private var customView: WeakReference<View>? = null
-    private var viewCallback: CustomViewCallback? = null
+    private var viewCallback: IX5WebChromeClient.CustomViewCallback? = null
 
-    fun onShowCustomView(context: Context, view: View, callback: CustomViewCallback) {
+    fun onShowCustomView(context: Context, view: View, callback: IX5WebChromeClient.CustomViewCallback) {
         if (customView?.get() != null) {
             callback.onCustomViewHidden()
             return

@@ -1,7 +1,8 @@
 package io.github.edsuns.adblockclient.sample
 
 import android.util.Patterns
-import android.webkit.URLUtil
+import com.tencent.smtt.sdk.URLUtil
+
 
 /**
  * Created by Edsuns@qq.com on 2021/1/3.

@@ -66,7 +66,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <WebView
+    <com.tencent.smtt.sdk.WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
