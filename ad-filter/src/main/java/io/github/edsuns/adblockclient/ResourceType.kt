@@ -125,7 +125,7 @@ private object UrlResourceTypeDetector {
         "svi", "3gp", "3g2", "mxf", "roq", "nsv", "8svx", "aa", "aac", "aax", "act", "aiff", "alac",
         "amr", "ape", "au", "awb", "cda", "dct", "dss", "dvf", "flac", "gsm", "iklax", "ivs", "m4a",
         "m4b", "mmf", "mogg", "mp3", "mpc", "msv", "nmf", "oga", "ogg", "opus", "ra", "raw", "rf64",
-        "sln", "tta", "voc", "vox", "wav", "wma", "wv"
+        "sln", "tta", "voc", "vox", "wav", "wma", "wv","m3u8","ts"
     )
 
     private val extensionTypeMap: MutableMap<String, ResourceType> = HashMap<String, ResourceType>()
