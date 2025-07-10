@@ -48,8 +48,7 @@ const int AdBlockClient::kFingerprintSize = 6;
 
 static HashFn2Byte hashFn2Byte;
 
-static char *rule_definition_fallback = "-";
-
+static char rule_definition_fallback[] = "-";
 /**
  * Finds the host within the passed in URL and returns its length
  */
