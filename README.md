@@ -1,6 +1,6 @@
 # AdblockAndroid
 
-[![](https://jitpack.io/v/Edsuns/AdblockAndroid.svg)](https://jitpack.io/#Edsuns/AdblockAndroid)
+[![](https://jitpack.io/v/panghupanghu/AdblockAndroid.svg)](https://jitpack.io/#panghupanghu/AdblockAndroid)
 
 *English | [简体中文](README.zh-cn.md)*
 
