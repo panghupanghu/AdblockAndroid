@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import io.github.edsuns.adblockclient.sample.main.blocking.BlockingInfo
 import io.github.edsuns.adblockclient.sample.stripParamsAndAnchor
 import io.github.edsuns.adfilter.FilterResult
+
 class MainViewModel : ViewModel() {
 
     private val _blockingInfoMap = HashMap<String, BlockingInfo>()

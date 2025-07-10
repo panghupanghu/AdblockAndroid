@@ -3,7 +3,9 @@ package io.github.edsuns.adblockclient.sample
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-
+/**
+ * Try to show the keyboard and returns whether it worked
+ */
 fun View.showKeyboard(): Boolean {
     if (requestFocus()) {
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

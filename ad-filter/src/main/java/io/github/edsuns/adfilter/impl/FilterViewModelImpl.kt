@@ -227,7 +227,6 @@ internal class FilterViewModelImpl constructor(
 
     private fun saveFilterMap() {
         sharedPreferences.filterMap = Json.encodeToString(filterMap.value)
-        //Timber.v("Save sharedPreferences.filterMap")
     }
 
     companion object {

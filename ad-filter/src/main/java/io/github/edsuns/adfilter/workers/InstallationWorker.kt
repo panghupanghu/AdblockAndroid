@@ -33,15 +33,12 @@ internal class InstallationWorker(context: Context, params: WorkerParameters) : 
         val checksum = Checksum(dataStr)
         // reject filter that doesn't include both checksum and license if checkLicense is true
         if (checksum.checksumIn == null && checkLicense && !validateLicense(dataStr)) {
-            //Timber.v("Filter is invalid: $id")
             return Result.success()
         }
-        //Timber.v("Checksum: $rawChecksum, ${checksum.checksumIn}, ${checksum.checksumCalc}, ${checksum.validate()}")
         if (!checksum.validate()) {
             return Result.failure()
         }
         if (checksum.validate(rawChecksum)) {
-            //Timber.v("Filter is up to date: $id")
             return Result.success(
                 workDataOf(
                     KEY_FILTER_NAME to name,

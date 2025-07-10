@@ -25,14 +25,12 @@ internal class Scriptlet constructor(private val detector: Detector) {
 
     fun perform(webView: WebView?, url: String?) {
         webView?.evaluateJavascript(scriptletsJS, null)
-        //Timber.v("Evaluated Scriptlets Javascript for $url")
     }
 
     @JavascriptInterface
     fun getScriptlets(documentUrl: String): String {
         val list = detector.getScriptlets(documentUrl)
         val json = list.toScriptletsJSON()
-        //Timber.v("offer scriptlets: $json")
         return json
     }
 

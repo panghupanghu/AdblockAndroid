@@ -12,6 +12,8 @@ import io.github.edsuns.adblockclient.sample.main.MainActivity
 import io.github.edsuns.adblockclient.sample.settings.SettingsActivity
 import io.github.edsuns.adfilter.AdFilter
 
+
+
 class App : Application() {
     override fun onCreate() {
         super.onCreate()

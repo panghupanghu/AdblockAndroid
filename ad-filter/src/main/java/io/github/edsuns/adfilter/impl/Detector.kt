@@ -31,7 +31,6 @@ internal class DetectorImpl : Detector {
                 value.isGenericElementHidingEnabled = genericElementHidingEnabled
             }
             field = value
-            //Timber.v("Blacklist client changed")
         }
 
     var genericElementHidingEnabled: Boolean = true
@@ -47,19 +46,19 @@ internal class DetectorImpl : Detector {
         client.isGenericElementHidingEnabled = genericElementHidingEnabled
         clients.removeAll { it.id == client.id }
         clients.add(client)
-        //Timber.v("Client count: ${clients.size} (after addClient)")
     }
 
     override fun removeClient(id: String) {
         clients.removeAll { it.id == id }
-        //Timber.v("Client count: ${clients.size} (after removeClient)")
     }
 
     override fun clearAllClient() {
         clients.clear()
-        //Timber.v("Client count: ${clients.size} (after clearAllClient)")
     }
 
+    /**
+     * returns not null if should block the web resource
+     */
     override fun shouldBlock(
         url: String,
         documentUrl: String,

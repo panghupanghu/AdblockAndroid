@@ -1,5 +1,4 @@
 package io.github.edsuns.adfilter
-
 interface CustomFilter : Iterator<String> {
     /**
      * Get specified line of rule.

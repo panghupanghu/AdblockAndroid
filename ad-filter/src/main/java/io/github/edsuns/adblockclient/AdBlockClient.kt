@@ -17,8 +17,6 @@
 package io.github.edsuns.adblockclient
 
 import android.net.Uri
-
-
 class AdBlockClient(override val id: String) : Client {
 
     private val nativeClientPointer: Long
@@ -37,10 +35,7 @@ class AdBlockClient(override val id: String) : Client {
      * @param data requires UTF-8 bytes
      */
     fun loadBasicData(data: ByteArray, preserveRules: Boolean = false) {
-        //val timestamp = System.currentTimeMillis()
-        //Timber.d("Loading basic data for $id")
         rawDataPointer = loadBasicData(nativeClientPointer, data, preserveRules)
-        //Timber.d("Loading basic data for $id completed in ${System.currentTimeMillis() - timestamp}ms")
     }
 
     override var isGenericElementHidingEnabled: Boolean
@@ -58,10 +53,7 @@ class AdBlockClient(override val id: String) : Client {
     ): Long
 
     fun loadProcessedData(data: ByteArray) {
-        //val timestamp = System.currentTimeMillis()
-        //Timber.d("Loading preprocessed data for $id")
         processedDataPointer = loadProcessedData(nativeClientPointer, data)
-        //Timber.d("Loading preprocessed data for $id completed in ${System.currentTimeMillis() - timestamp}ms")
     }
 
     private external fun loadProcessedData(clientPointer: Long, data: ByteArray): Long
@@ -127,7 +119,7 @@ class AdBlockClient(override val id: String) : Client {
 
     companion object {
         init {
-            System.loadLibrary("adblock-client")
+            System.loadLibrary("adblocker")
         }
     }
 }

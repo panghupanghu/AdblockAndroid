@@ -3,6 +3,9 @@ package io.github.edsuns.adfilter.impl
 import io.github.edsuns.adblockclient.AdBlockClient
 import io.github.edsuns.adfilter.CustomFilter
 
+/**
+ * Created by Edsuns@qq.com on 2020/10/24.
+ */
 internal class FilterDataLoader(
     val detector: Detector,
     private val binaryDataStore: BinaryDataStore
@@ -17,8 +20,6 @@ internal class FilterDataLoader(
             } else {
                 detector.addClient(client)
             }
-        } else {
-            //Timber.v("Couldn't find client processed data: $id")
         }
     }
 
