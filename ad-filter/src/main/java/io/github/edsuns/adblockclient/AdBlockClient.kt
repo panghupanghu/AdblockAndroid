@@ -37,7 +37,7 @@ class AdBlockClient(override val id: String) : Client {
      * @param data requires UTF-8 bytes
      */
     fun loadBasicData(data: ByteArray, preserveRules: Boolean = false) {
-        val timestamp = System.currentTimeMillis()
+        //val timestamp = System.currentTimeMillis()
         //Timber.d("Loading basic data for $id")
         rawDataPointer = loadBasicData(nativeClientPointer, data, preserveRules)
         //Timber.d("Loading basic data for $id completed in ${System.currentTimeMillis() - timestamp}ms")
@@ -58,7 +58,7 @@ class AdBlockClient(override val id: String) : Client {
     ): Long
 
     fun loadProcessedData(data: ByteArray) {
-        val timestamp = System.currentTimeMillis()
+        //val timestamp = System.currentTimeMillis()
         //Timber.d("Loading preprocessed data for $id")
         processedDataPointer = loadProcessedData(nativeClientPointer, data)
         //Timber.d("Loading preprocessed data for $id completed in ${System.currentTimeMillis() - timestamp}ms")
