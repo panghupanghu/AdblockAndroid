@@ -16,6 +16,7 @@
 
 package io.github.edsuns.adblockclient
 
+import io.github.edsuns.adblockclient.hasException
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -33,12 +34,12 @@ class AdBlockClientTest {
         private const val documentUrl = "http://example.com"
         private const val trackerUrl = "http://imasdk.googleapis.com/js/sdkloader/ima3.js"
         private const val nonTrackerUrl = "http://duckduckgo.com/index.html"
-        private val resourceType = ResourceType.UNKNOWN
+        private val resourceType = io.github.edsuns.adblockclient.ResourceType.UNKNOWN
     }
 
     @Test
     fun whenBasicDataLoadedThenTrackerIsBlocked() {
-        val testee = AdBlockClient(id)
+        val testee = io.github.edsuns.adblockclient.AdBlockClient(id)
         testee.loadBasicData(data(), true)
         val result = testee.matches(trackerUrl, documentUrl, resourceType)
         assertTrue(result.shouldBlock)
@@ -47,7 +48,7 @@ class AdBlockClientTest {
 
     @Test
     fun whenBasicDataLoadedThenNonTrackerIsNotBlocked() {
-        val testee = AdBlockClient(id)
+        val testee = io.github.edsuns.adblockclient.AdBlockClient(id)
         testee.loadBasicData(data())
         val result = testee.matches(nonTrackerUrl, documentUrl, resourceType)
         assertFalse(result.shouldBlock)
@@ -55,7 +56,7 @@ class AdBlockClientTest {
 
     @Test
     fun whenBasicDataLoadedThenExceptionIsNotBlocked() {
-        val testee = AdBlockClient(id)
+        val testee = io.github.edsuns.adblockclient.AdBlockClient(id)
         testee.loadBasicData(data())// do not enable preserveRules, test disabling it here
         val exceptionUrl = "https://exception-rule.com/a/b/info"
         val result = testee.matches(exceptionUrl, documentUrl, resourceType)
@@ -66,7 +67,7 @@ class AdBlockClientTest {
 
     @Test
     fun whenBasicDataLoadedWithThirdPartyOptionThenFirstPartyIsNotBlocked() {
-        val testee = AdBlockClient(id)
+        val testee = io.github.edsuns.adblockclient.AdBlockClient(id)
         testee.loadBasicData(data())
         val result = testee.matches(trackerUrl, trackerUrl, resourceType)
         assertFalse(result.shouldBlock)
@@ -99,7 +100,7 @@ class AdBlockClientTest {
         val testee = loadClientFromProcessedData()
         testee.loadBasicData(data(), true)
         val urlBlockedByRegexRule = "https://example.com:4443/ty/c-2705-25-1.html"
-        val result = testee.matches(urlBlockedByRegexRule, documentUrl, ResourceType.SUBDOCUMENT)
+        val result = testee.matches(urlBlockedByRegexRule, documentUrl, io.github.edsuns.adblockclient.ResourceType.SUBDOCUMENT)
         assertTrue(result.shouldBlock)
         assertFalse(result.matchedRule.isNullOrBlank())
     }
@@ -127,11 +128,11 @@ class AdBlockClientTest {
         assertFalse(selectors.contains("#videoads"))
     }
 
-    private fun loadClientFromProcessedData(): AdBlockClient {
-        val original = AdBlockClient(id)
+    private fun loadClientFromProcessedData(): io.github.edsuns.adblockclient.AdBlockClient {
+        val original = io.github.edsuns.adblockclient.AdBlockClient(id)
         original.loadBasicData(data(), true)
         val processedData = original.getProcessedData()
-        val testee = AdBlockClient(id)
+        val testee = io.github.edsuns.adblockclient.AdBlockClient(id)
         testee.loadProcessedData(processedData)
         return testee
     }
