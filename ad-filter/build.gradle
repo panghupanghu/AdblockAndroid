@@ -63,8 +63,7 @@ dependencies {
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines"
 
     // Anko
-    implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
-    implementation "org.jetbrains.anko:anko-design:$ankoVersion"
+
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
 

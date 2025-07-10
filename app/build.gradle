@@ -97,4 +97,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
 
     implementation 'com.github.Edsuns:SmoothProgressAnimator:1.0'
+    implementation project(':ad-filter')
 }
