@@ -4,12 +4,8 @@ import io.github.edsuns.adblockclient.Client
 import io.github.edsuns.adblockclient.MatchResult
 import io.github.edsuns.adblockclient.ResourceType
 import io.github.edsuns.adblockclient.hasException
-import timber.log.Timber
 import java.util.concurrent.CopyOnWriteArrayList
 
-/**
- * Created by Edsuns@qq.com on 2020/10/24.
- */
 internal interface Detector {
     val clients: List<Client>
     var customFilterClient: Client?
@@ -35,7 +31,7 @@ internal class DetectorImpl : Detector {
                 value.isGenericElementHidingEnabled = genericElementHidingEnabled
             }
             field = value
-            Timber.v("Blacklist client changed")
+            //Timber.v("Blacklist client changed")
         }
 
     var genericElementHidingEnabled: Boolean = true
@@ -51,22 +47,19 @@ internal class DetectorImpl : Detector {
         client.isGenericElementHidingEnabled = genericElementHidingEnabled
         clients.removeAll { it.id == client.id }
         clients.add(client)
-        Timber.v("Client count: ${clients.size} (after addClient)")
+        //Timber.v("Client count: ${clients.size} (after addClient)")
     }
 
     override fun removeClient(id: String) {
         clients.removeAll { it.id == id }
-        Timber.v("Client count: ${clients.size} (after removeClient)")
+        //Timber.v("Client count: ${clients.size} (after removeClient)")
     }
 
     override fun clearAllClient() {
         clients.clear()
-        Timber.v("Client count: ${clients.size} (after clearAllClient)")
+        //Timber.v("Client count: ${clients.size} (after clearAllClient)")
     }
 
-    /**
-     * returns not null if should block the web resource
-     */
     override fun shouldBlock(
         url: String,
         documentUrl: String,

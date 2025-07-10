@@ -5,11 +5,6 @@ import androidx.lifecycle.ViewModel
 import io.github.edsuns.adblockclient.sample.main.blocking.BlockingInfo
 import io.github.edsuns.adblockclient.sample.stripParamsAndAnchor
 import io.github.edsuns.adfilter.FilterResult
-import timber.log.Timber
-
-/**
- * Created by Edsuns@qq.com on 2021/2/27.
- */
 class MainViewModel : ViewModel() {
 
     private val _blockingInfoMap = HashMap<String, BlockingInfo>()
@@ -36,7 +31,7 @@ class MainViewModel : ViewModel() {
             val requestUrl = filterResult.resourceUrl.stripParamsAndAnchor()
             blockingInfo.blockedUrlMap[requestUrl] = filterResult.rule ?: ""
             blockingInfo.blockedRequests++
-            Timber.v("Web request $requestUrl blocked by rule \"${filterResult.rule}\"")
+            //Timber.v("Web request $requestUrl blocked by rule \"${filterResult.rule}\"")
         }
         blockingInfo.allRequests++
         blockingInfoMap.postValue(data)

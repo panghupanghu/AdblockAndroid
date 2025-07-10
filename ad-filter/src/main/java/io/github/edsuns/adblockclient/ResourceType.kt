@@ -20,14 +20,6 @@ import android.net.Uri
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import java.util.*
 
-
-/**
- * Modified by Edsuns@qq.com.
- *
- * Description: In `duckduckgo/Android`, `tag/5.38.1` is the last version that has the implement of AdBlockClient.
- *
- * Reference: [github.com/duckduckgo/Android/releases/tag/5.38.1](https://github.com/duckduckgo/Android/releases/tag/5.38.1)
- */
 enum class ResourceType(val filterOption: Int) {
 
     UNKNOWN(0),
@@ -40,10 +32,6 @@ enum class ResourceType(val filterOption: Int) {
     MEDIA(0x100000);
 
     companion object {
-        /**
-         * A coarse approach to guessing the resource type from a request
-         * to assist the tracker matcher
-         */
         fun from(webResourceRequest: WebResourceRequest): ResourceType {
             var result = HeadersResourceTypeDetector.detect(webResourceRequest.requestHeaders)
             if (result == null) {
@@ -68,8 +56,6 @@ private object HeadersResourceTypeDetector {
         if (headers == null) {
             return null
         }
-
-        // Be aware that this header can be removed by JavaScript, so there will still be misses.
         val isXmlHttpRequest =
             HEADER_REQUESTED_WITH_XMLHTTPREQUEST == headers[HEADER_REQUESTED_WITH]
         if (isXmlHttpRequest) {
@@ -84,7 +70,6 @@ private object HeadersResourceTypeDetector {
     }
 
     private fun detect(acceptHeader: String): ResourceType? {
-        // accept header may contain different MIME types, pick up the first one
         val comma = acceptHeader.indexOf(',')
         val firstMIME = if (comma > -1) acceptHeader.substring(0, comma) else acceptHeader
 
@@ -119,14 +104,11 @@ private object UrlResourceTypeDetector {
     private val EXTENSIONS_FONT = arrayOf("ttf", "woff", "woff2")
     private val EXTENSIONS_HTML = arrayOf("htm", "html")
 
-    // listed https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
     private val EXTENSIONS_IMAGE = arrayOf(
         "png", "jpg", "jpe", "jpeg", "bmp", "gif", "apng", "cur", "jfif",
         "ico", "pjpeg", "pjp", "svg", "tif", "tiff", "webp"
     )
 
-    // video files listed here https://en.wikipedia.org/wiki/Video_file_format
-    // audio files listed here https://en.wikipedia.org/wiki/Audio_file_format
     private val EXTENSIONS_MEDIA = arrayOf(
         "webm", "mkv", "flv", "vob", "ogv", "drc", "mng", "avi", "mov", "gifv", "qt", "wmv", "yuv",
         "rm", "rmvb", "asf", "amv", "mp4", "m4p", "mp2", "mpe", "mpv", "mpg", "mpeg", "m2v", "m4v",
@@ -149,7 +131,6 @@ private object UrlResourceTypeDetector {
 
     private fun mapExtensions(extensions: Array<String>, contentType: ResourceType) {
         for (extension in extensions) {
-            // all comparisons are in lower case, force that the extensions are in lower case
             extensionTypeMap[extension.toLowerCase(Locale.ROOT)] = contentType
         }
     }

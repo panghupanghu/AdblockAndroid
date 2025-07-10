@@ -57,18 +57,10 @@ dependencies {
 
     implementation project(':adblock-client')
 
-    implementation "com.jakewharton.timber:timber:$timber"
-
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines"
-
-    // Anko
-
-
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
-
     implementation "androidx.work:work-runtime-ktx:2.4.0"
-
     implementation 'com.github.Edsuns:HttpRequest:0.2'
 
     implementation "com.github.Edsuns.Mezzanine:mezzanine:$mezzanineVersion"

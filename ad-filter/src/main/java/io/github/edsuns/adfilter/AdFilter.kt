@@ -7,9 +7,6 @@ import com.tencent.smtt.sdk.WebViewClient
 import io.github.edsuns.adblockclient.ResourceType
 import io.github.edsuns.adfilter.impl.AdFilterImpl
 
-/**
- * Created by Edsuns@qq.com on 2020/10/24.
- */
 interface AdFilter {
 
     /**

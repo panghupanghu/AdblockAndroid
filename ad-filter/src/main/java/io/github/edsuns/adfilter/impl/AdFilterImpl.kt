@@ -23,10 +23,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.io.File
-
-/**
- * Created by Edsuns@qq.com on 2021/7/29.
- */
 internal class AdFilterImpl constructor(appContext: Context) : AdFilter {
 
     private val detector: Detector = DetectorImpl()

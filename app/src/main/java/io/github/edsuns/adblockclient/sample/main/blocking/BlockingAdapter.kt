@@ -7,9 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.github.edsuns.adblockclient.sample.R
 
-/**
- * Created by Edsuns@qq.com on 2021/2/27.
- */
 class BlockedListAdapter(private val layoutInflater: LayoutInflater) :
     RecyclerView.Adapter<BlockedRequestViewHolder>() {
 

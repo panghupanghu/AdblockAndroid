@@ -3,9 +3,6 @@ package io.github.edsuns.adfilter.script
 import com.anthonycr.mezzanine.FileStream
 import com.anthonycr.mezzanine.MezzanineGenerator
 
-/**
- * Created by Edsuns@qq.com on 2021/4/3.
- */
 internal object ScriptInjection {
 
     @FileStream("src/main/js/inject.js")

@@ -1,8 +1,5 @@
 package io.github.edsuns.adfilter.util
 
-/**
- * Created by Edsuns@qq.com on 2021/1/24.
- */
 open class RuleIterator internal constructor(data: String? = null) : Iterator<String> {
 
     internal val dataBuilder: StringBuilder =

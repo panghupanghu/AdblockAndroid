@@ -12,9 +12,6 @@ import io.github.edsuns.adblockclient.sample.R
 import io.github.edsuns.adblockclient.sample.databinding.FragmentBlockingBottomSheetBinding
 import io.github.edsuns.adblockclient.sample.main.MainViewModel
 
-/**
- * Created by Edsuns@qq.com on 2021/2/27.
- */
 class BlockingInfoDialogFragment : BottomSheetDialogFragment() {
 
     private var _binding: FragmentBlockingBottomSheetBinding? = null

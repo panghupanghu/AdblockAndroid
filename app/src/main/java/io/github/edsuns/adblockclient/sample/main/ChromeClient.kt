@@ -6,10 +6,6 @@ import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 
-
-/**
- * Created by Edsuns@qq.com on 2021/1/2.
- */
 class ChromeClient(private val webViewClientListener: WebViewClientListener) : WebChromeClient() {
 
     override fun onProgressChanged(view: WebView?, newProgress: Int) {

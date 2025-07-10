@@ -18,11 +18,7 @@ import io.github.edsuns.adfilter.workers.InstallationWorker
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import timber.log.Timber
 
-/**
- * Created by Edsuns@qq.com on 2021/7/29.
- */
 internal class FilterViewModelImpl constructor(
     context: Context,
     private val filterDataLoader: FilterDataLoader
@@ -231,7 +227,7 @@ internal class FilterViewModelImpl constructor(
 
     private fun saveFilterMap() {
         sharedPreferences.filterMap = Json.encodeToString(filterMap.value)
-        Timber.v("Save sharedPreferences.filterMap")
+        //Timber.v("Save sharedPreferences.filterMap")
     }
 
     companion object {

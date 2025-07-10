@@ -15,11 +15,7 @@ import io.github.edsuns.adfilter.impl.Constants.KEY_FILTER_ID
 import io.github.edsuns.adfilter.impl.Constants.KEY_FILTER_NAME
 import io.github.edsuns.adfilter.impl.Constants.KEY_RAW_CHECKSUM
 import io.github.edsuns.adfilter.util.Checksum
-import timber.log.Timber
 
-/**
- * Created by Edsuns@qq.com on 2021/1/5.
- */
 internal class InstallationWorker(context: Context, params: WorkerParameters) : Worker(
     context,
     params
@@ -37,15 +33,15 @@ internal class InstallationWorker(context: Context, params: WorkerParameters) : 
         val checksum = Checksum(dataStr)
         // reject filter that doesn't include both checksum and license if checkLicense is true
         if (checksum.checksumIn == null && checkLicense && !validateLicense(dataStr)) {
-            Timber.v("Filter is invalid: $id")
+            //Timber.v("Filter is invalid: $id")
             return Result.success()
         }
-        Timber.v("Checksum: $rawChecksum, ${checksum.checksumIn}, ${checksum.checksumCalc}, ${checksum.validate()}")
+        //Timber.v("Checksum: $rawChecksum, ${checksum.checksumIn}, ${checksum.checksumCalc}, ${checksum.validate()}")
         if (!checksum.validate()) {
             return Result.failure()
         }
         if (checksum.validate(rawChecksum)) {
-            Timber.v("Filter is up to date: $id")
+            //Timber.v("Filter is up to date: $id")
             return Result.success(
                 workDataOf(
                     KEY_FILTER_NAME to name,

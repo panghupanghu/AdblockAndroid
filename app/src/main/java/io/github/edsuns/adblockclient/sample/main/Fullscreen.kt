@@ -11,10 +11,6 @@ import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient
 
 import java.lang.ref.WeakReference
 
-
-/**
- * Created by Edsuns@qq.com on 2021/4/4.
- */
 object Fullscreen {
 
     private var customView: WeakReference<View>? = null

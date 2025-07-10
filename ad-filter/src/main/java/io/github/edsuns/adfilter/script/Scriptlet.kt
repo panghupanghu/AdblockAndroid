@@ -5,11 +5,6 @@ import com.tencent.smtt.sdk.WebView
 import com.anthonycr.mezzanine.FileStream
 import com.anthonycr.mezzanine.MezzanineGenerator
 import io.github.edsuns.adfilter.impl.Detector
-import timber.log.Timber
-
-/**
- * Created by Edsuns@qq.com on 2021/4/3.
- */
 internal class Scriptlet constructor(private val detector: Detector) {
 
     @FileStream("src/main/js/scriptlets.min.js")
@@ -30,14 +25,14 @@ internal class Scriptlet constructor(private val detector: Detector) {
 
     fun perform(webView: WebView?, url: String?) {
         webView?.evaluateJavascript(scriptletsJS, null)
-        Timber.v("Evaluated Scriptlets Javascript for $url")
+        //Timber.v("Evaluated Scriptlets Javascript for $url")
     }
 
     @JavascriptInterface
     fun getScriptlets(documentUrl: String): String {
         val list = detector.getScriptlets(documentUrl)
         val json = list.toScriptletsJSON()
-        Timber.v("offer scriptlets: $json")
+        //Timber.v("offer scriptlets: $json")
         return json
     }
 

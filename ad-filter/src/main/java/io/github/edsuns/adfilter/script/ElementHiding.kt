@@ -5,13 +5,8 @@ import com.tencent.smtt.sdk.WebView
 import com.anthonycr.mezzanine.FileStream
 import com.anthonycr.mezzanine.MezzanineGenerator
 import io.github.edsuns.adfilter.impl.Detector
-import timber.log.Timber
 import java.net.MalformedURLException
 import java.net.URL
-
-/**
- * Created by Edsuns@qq.com on 2021/1/22.
- */
 internal class ElementHiding constructor(private val detector: Detector) {
 
     @FileStream("src/main/js/elemhide_blocked.js")
@@ -48,10 +43,10 @@ internal class ElementHiding constructor(private val detector: Detector) {
                 filenameWithQuery = filenameWithQuery.substring(1)
             }
         } catch (e: MalformedURLException) {
-            Timber.e("Failed to parse URI for blocked resource:$resourceUrl. Skipping element hiding")
+            //Timber.e("Failed to parse URI for blocked resource:$resourceUrl. Skipping element hiding")
             return
         }
-        Timber.d("Trying to elemhide visible blocked resource with url `$resourceUrl`")
+        //Timber.d("Trying to elemhide visible blocked resource with url `$resourceUrl`")
 
         // It finds all the elements with source URLs ending with ... and then compare full paths.
         // We do this trick because the paths in JS (code) can be relative and in DOM tree they are absolute.
@@ -79,7 +74,7 @@ internal class ElementHiding constructor(private val detector: Detector) {
 
     fun perform(webView: WebView?, url: String?) {
         webView?.evaluateJavascript(eleHidingJS, null)
-        Timber.v("Evaluated element hiding Javascript for $url")
+        //Timber.v("Evaluated element hiding Javascript for $url")
     }
 
     private fun List<String>.joinString(): String {

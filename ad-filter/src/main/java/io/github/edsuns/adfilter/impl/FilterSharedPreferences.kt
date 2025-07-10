@@ -7,9 +7,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-/**
- * Created by Edsuns@qq.com on 2021/1/1.
- */
 internal class FilterSharedPreferences(private val context: Context) {
 
     val hasInstallation: Boolean

@@ -22,9 +22,6 @@ import io.github.edsuns.adfilter.FilterViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * Created by Edsuns@qq.com on 2021/2/28.
- */
 class FilterListAdapter(
     private val context: Context,
     private val layoutInflater: LayoutInflater

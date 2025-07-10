@@ -7,9 +7,6 @@ import androidx.work.WorkInfo.State.*
 import androidx.work.WorkRequest
 import io.github.edsuns.adfilter.util.None
 
-/**
- * Created by Edsuns@qq.com on 2021/1/1.
- */
 interface FilterViewModel {
 
     /**

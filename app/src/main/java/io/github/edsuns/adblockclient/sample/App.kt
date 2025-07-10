@@ -11,11 +11,7 @@ import androidx.core.app.NotificationManagerCompat
 import io.github.edsuns.adblockclient.sample.main.MainActivity
 import io.github.edsuns.adblockclient.sample.settings.SettingsActivity
 import io.github.edsuns.adfilter.AdFilter
-import timber.log.Timber
 
-/**
- * Created by Edsuns@qq.com on 2021/1/1.
- */
 class App : Application() {
     override fun onCreate() {
         super.onCreate()

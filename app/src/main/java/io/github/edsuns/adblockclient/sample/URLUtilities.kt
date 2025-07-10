@@ -3,10 +3,6 @@ package io.github.edsuns.adblockclient.sample
 import android.util.Patterns
 import com.tencent.smtt.sdk.URLUtil
 
-
-/**
- * Created by Edsuns@qq.com on 2021/1/3.
- */
 fun String.stripParamsAndAnchor(): String {
     var result = this
     var index = this.indexOf('?')

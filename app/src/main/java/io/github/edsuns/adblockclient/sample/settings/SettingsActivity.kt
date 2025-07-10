@@ -17,9 +17,6 @@ import io.github.edsuns.adblockclient.sample.databinding.ActivitySettingsBinding
 import io.github.edsuns.adfilter.AdFilter
 import io.github.edsuns.adfilter.FilterViewModel
 
-/**
- * Created by Edsuns@qq.com on 2021/1/1.
- */
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding

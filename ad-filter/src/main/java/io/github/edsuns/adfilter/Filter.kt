@@ -3,9 +3,6 @@ package io.github.edsuns.adfilter
 import io.github.edsuns.adfilter.util.sha1
 import kotlinx.serialization.Serializable
 
-/**
- * Created by Edsuns@qq.com on 2021/1/1.
- */
 @Serializable
 data class Filter internal constructor(
     val url: String,

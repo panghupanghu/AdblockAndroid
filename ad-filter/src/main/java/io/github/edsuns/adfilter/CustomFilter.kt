@@ -1,8 +1,5 @@
 package io.github.edsuns.adfilter
 
-/**
- * Created by Edsuns@qq.com on 2021/1/24.
- */
 interface CustomFilter : Iterator<String> {
     /**
      * Get specified line of rule.

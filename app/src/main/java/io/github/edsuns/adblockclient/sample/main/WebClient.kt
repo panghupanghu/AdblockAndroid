@@ -10,9 +10,6 @@ import com.tencent.smtt.sdk.WebViewClient
 
 import io.github.edsuns.adfilter.AdFilter
 
-/**
- * Created by Edsuns@qq.com on 2021/1/1.
- */
 class WebClient(private val webViewClientListener: WebViewClientListener) : WebViewClient() {
 
     private val filter = AdFilter.get()

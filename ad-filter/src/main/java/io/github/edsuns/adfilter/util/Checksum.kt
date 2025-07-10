@@ -2,11 +2,6 @@ package io.github.edsuns.adfilter.util
 
 import android.util.Base64
 
-/**
- * Created by Edsuns@qq.com on 2021/1/7.
- *
- * Reference: [validateChecksum.py](https://hg.adblockplus.org/adblockplus/file/tip/validateChecksum.py)
- */
 class Checksum(val filter: String) {
     // here don't use '$' as the end of a line
     private val checksumRegexp = Regex(
