@@ -1,4 +1,4 @@
-# AdblockAndroid
+# AdblockAndroidForX5
 
 [![](https://jitpack.io/v/panghupanghu/AdblockAndroid.svg)](https://jitpack.io/#panghupanghu/AdblockAndroid)
 
