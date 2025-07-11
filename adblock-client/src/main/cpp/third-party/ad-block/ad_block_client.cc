@@ -1503,79 +1503,82 @@ bool AdBlockClient::parse(const char *input, bool preserveRules) {
   // record parsing results in a linked list
   LinkedList<Filter> filterList;
 
-  const char *lineStart = input;
-  const char *p = lineStart + 1;
+  if (input != nullptr && *input != '\0'){
+      const char *lineStart = input;
+      const char *p = lineStart + 1;
+      while (true) {
+          if ((isEndOfLine(*p) || *p == '\0') && p > lineStart) {
+              Filter f;
+              parseFilter(lineStart, p, &f, bloomFilter, exceptionBloomFilter,
+                          hostAnchoredHashSet,
+                          hostAnchoredExceptionHashSet,
+                          &genericCosmeticFilters,
+                          preserveRules);
+              if (f.isValid()) {
+                  filterList.push_back(f);
+                  switch (f.filterType & FTListTypesMask) {
+                      case FTException:
+                          if (f.filterType & FTHostOnly) {
+                              newNumHostAnchoredExceptionFilters++;
+                          } else if (AdBlockClient::getFingerprint(nullptr, f)) {
+                              newNumExceptionFilters++;
+                          } else if (f.isDomainOnlyFilter()) {
+                              newNumNoFingerprintDomainOnlyExceptionFilters++;
+                          } else if (f.isAntiDomainOnlyFilter()) {
+                              newNumNoFingerprintAntiDomainOnlyExceptionFilters++;
+                          } else {
+                              newNumNoFingerprintExceptionFilters++;
+                          }
+                          break;
+                      case FTExtendedCss:
+                          numExtendedCss++;// ExtendedCss belong to Element Hiding
+                          // without break
+                      case FTElementHiding:
+                      case FTElementHidingException:
+                          newNumCosmeticFilters++;
+                          break;
+                      case FTCss:
+                      case FTCssException:
+                          numCssRules++;
+                          newNumCosmeticFilters++;
+                          break;
+                      case FTHTMLFiltering:
+                          newNumHtmlFilters++;
+                          break;
+                      case FTScriptlet:
+                          newNumScriptletFilters++;
+                          break;
+                      case FTEmpty:
+                      case FTComment:
+                          // No need to store comments
+                          break;
+                      default:
+                          if (f.filterType & FTHostOnly) {
+                              newNumHostAnchoredFilters++;
+                          } else if (AdBlockClient::getFingerprint(nullptr, f)) {
+                              newNumFilters++;
+                          } else if (f.isDomainOnlyFilter()) {
+                              newNumNoFingerprintDomainOnlyFilters++;
+                          } else if (f.isAntiDomainOnlyFilter()) {
+                              newNumNoFingerprintAntiDomainOnlyFilters++;
+                          } else {
+                              newNumNoFingerprintFilters++;
+                          }
+                          break;
+                  }
+              }
+              lineStart = p + 1;
+          }
 
-  while (true) {
-    if ((isEndOfLine(*p) || *p == '\0') && p > lineStart) {
-      Filter f;
-      parseFilter(lineStart, p, &f, bloomFilter, exceptionBloomFilter,
-                  hostAnchoredHashSet,
-                  hostAnchoredExceptionHashSet,
-                  &genericCosmeticFilters,
-                  preserveRules);
-      if (f.isValid()) {
-        filterList.push_back(f);
-        switch (f.filterType & FTListTypesMask) {
-        case FTException:
-          if (f.filterType & FTHostOnly) {
-            newNumHostAnchoredExceptionFilters++;
-          } else if (AdBlockClient::getFingerprint(nullptr, f)) {
-            newNumExceptionFilters++;
-          } else if (f.isDomainOnlyFilter()) {
-            newNumNoFingerprintDomainOnlyExceptionFilters++;
-          } else if (f.isAntiDomainOnlyFilter()) {
-            newNumNoFingerprintAntiDomainOnlyExceptionFilters++;
-          } else {
-            newNumNoFingerprintExceptionFilters++;
+          if (*p == '\0') {
+              break;
           }
-          break;
-        case FTExtendedCss:
-          numExtendedCss++;// ExtendedCss belong to Element Hiding
-          // without break
-        case FTElementHiding:
-        case FTElementHidingException:
-          newNumCosmeticFilters++;
-          break;
-        case FTCss:
-        case FTCssException:
-          numCssRules++;
-          newNumCosmeticFilters++;
-          break;
-        case FTHTMLFiltering:
-          newNumHtmlFilters++;
-          break;
-        case FTScriptlet:
-          newNumScriptletFilters++;
-          break;
-        case FTEmpty:
-        case FTComment:
-          // No need to store comments
-          break;
-        default:
-          if (f.filterType & FTHostOnly) {
-            newNumHostAnchoredFilters++;
-          } else if (AdBlockClient::getFingerprint(nullptr, f)) {
-            newNumFilters++;
-          } else if (f.isDomainOnlyFilter()) {
-            newNumNoFingerprintDomainOnlyFilters++;
-          } else if (f.isAntiDomainOnlyFilter()) {
-            newNumNoFingerprintAntiDomainOnlyFilters++;
-          } else {
-            newNumNoFingerprintFilters++;
-          }
-          break;
-        }
+
+          p++;
       }
-      lineStart = p + 1;
-    }
-
-    if (*p == '\0') {
-      break;
-    }
-
-    p++;
   }
+
+
 
 #ifdef PERF_STATS
   cout << "Fingerprint size: " << AdBlockClient::kFingerprintSize << endl;
